@@ -20,6 +20,13 @@ class BubbleSpecialThree extends StatelessWidget {
   final TextStyle textStyle;
   final BoxConstraints? constraints;
 
+  final IconData? sentIcon;
+  final IconData? deliveredIcon;
+  final IconData? seenIcon;
+  final Color? sentColor;
+  final Color? deliveredColor;
+  final Color? seenColor;
+
   const BubbleSpecialThree({
     Key? key,
     this.isSender = true,
@@ -34,6 +41,12 @@ class BubbleSpecialThree extends StatelessWidget {
       color: Colors.black87,
       fontSize: 16,
     ),
+    this.sentIcon,
+    this.deliveredIcon,
+    this.seenIcon,
+    this.sentColor,
+    this.deliveredColor,
+    this.seenColor,
   }) : super(key: key);
 
   ///chat bubble builder method
@@ -43,26 +56,26 @@ class BubbleSpecialThree extends StatelessWidget {
     Icon? stateIcon;
     if (sent) {
       stateTick = true;
-      stateIcon = const Icon(
-        Icons.done,
+      stateIcon = Icon(
+        sentIcon ?? Icons.done,
         size: 18,
-        color: Color(0xFF97AD8E),
+        color: sentColor ?? Color(0xFF97AD8E),
       );
     }
     if (delivered) {
       stateTick = true;
-      stateIcon = const Icon(
-        Icons.done_all,
+      stateIcon = Icon(
+        deliveredIcon ?? Icons.done_all,
         size: 18,
-        color: Color(0xFF97AD8E),
+        color: deliveredColor ?? Color(0xFF97AD8E),
       );
     }
     if (seen) {
       stateTick = true;
-      stateIcon = const Icon(
-        Icons.done_all,
+      stateIcon = Icon(
+        seenIcon ?? Icons.done_all,
         size: 18,
-        color: Color(0xFF92DEDA),
+        color: seenColor ?? Color(0xFF92DEDA),
       );
     }
 
