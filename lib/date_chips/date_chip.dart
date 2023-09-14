@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 ///
 ///
 class DateChip extends StatelessWidget {
-  final DateTime date;
+  final DateTime? date;
+  final String? title;
   final Color color;
 
   ///
@@ -15,11 +16,16 @@ class DateChip extends StatelessWidget {
   ///
   const DateChip({
     Key? key,
-    required this.date,
+    this.date,
+    this.title,
     this.color = const Color(0x558AD3D5),
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    if (title == null && date == null) {
+      throw "Title and date cannot be null at the same time.";
+    }
+
     return Padding(
       padding: const EdgeInsets.only(
         top: 7,
@@ -33,7 +39,7 @@ class DateChip extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(5.0),
           child: Text(
-            Algo.dateChipText(date),
+            title ?? Algo.dateChipText(date!),
           ),
         ),
       ),
